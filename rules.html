@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Server Rules — Gaming Empire</title>
+<meta name="description" content="Server rules and guidelines for the Gaming Empire Discord community. 18+ server.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:      #0A0D16;
+    --panel:    #131829;
+    --panel-2:  #1B2138;
+    --line:     #2A314D;
+    --gold:     #C9A24B;
+    --gold-dim: #8A7238;
+    --emerald:  #4ADE80;
+    --ember:    #FF6B4A;
+    --text:     #E7E9F2;
+    --muted:    #8891A8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:'Space Grotesk',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  .display{font-family:'Cinzel',serif;letter-spacing:0.02em;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  .grid-field{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:64px 64px;
+    opacity:0.08;
+  }
+  .vignette{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background: radial-gradient(circle at 50% 0%, rgba(201,162,75,0.10), transparent 55%),
+                radial-gradient(circle at 50% 100%, rgba(10,13,22,0.9), transparent 60%);
+  }
+
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px; position:relative; z-index:1;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,13,22,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:1120px; margin:0 auto; padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-size:1.05rem; font-weight:600;}
+  .brand .crown{color:var(--gold); font-size:1.2rem;}
+  .nav-links{display:flex; gap:32px; font-size:0.92rem; color:var(--muted);}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-links a.active{color:var(--gold);}
+  .nav-cta{
+    background:var(--gold); color:var(--ink); font-weight:700; font-size:0.85rem;
+    padding:10px 20px; border-radius:2px; letter-spacing:0.03em; text-transform:uppercase;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .nav-cta:hover{transform:translateY(-1px); box-shadow:0 6px 20px rgba(201,162,75,0.25);}
+  @media(max-width:720px){ .nav-links{display:none;} }
+
+  /* ---------- PAGE HEAD ---------- */
+  .page-head{
+    position:relative; z-index:1; text-align:center; padding:90px 24px 50px;
+  }
+  .eyebrow{
+    display:inline-block; font-family:'JetBrains Mono',monospace; font-size:0.72rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--gold-dim);
+    border:1px solid var(--line); padding:6px 14px; border-radius:2px; margin-bottom:22px;
+  }
+  .page-head h1{font-size:clamp(2.2rem, 6vw, 3.4rem); font-weight:700;}
+  .page-head p{color:var(--muted); max-width:600px; margin:16px auto 0; font-size:1.05rem;}
+
+  .age-flag{
+    display:inline-flex; align-items:center; gap:8px; margin-top:24px;
+    border:1px solid rgba(255,107,74,0.4); color:var(--ember);
+    font-family:'JetBrains Mono',monospace; font-size:0.78rem; letter-spacing:0.12em;
+    text-transform:uppercase; padding:8px 18px; border-radius:2px;
+  }
+
+  section{position:relative; z-index:1; padding:0 24px 100px;}
+
+  /* ---------- RULES LIST ---------- */
+  .rules-list{
+    max-width:820px; margin:0 auto;
+    display:flex; flex-direction:column; gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:4px; overflow:hidden;
+  }
+  .rule{
+    background:var(--panel);
+    padding:32px 36px;
+    display:grid; grid-template-columns:56px 1fr; gap:24px;
+    transition:background 0.2s ease;
+  }
+  .rule:hover{background:var(--panel-2);}
+  @media(max-width:600px){
+    .rule{grid-template-columns:1fr; gap:12px;}
+  }
+  .rule-num{
+    font-family:'JetBrains Mono',monospace; font-size:1.6rem; font-weight:700; color:var(--gold-dim);
+  }
+  .rule h3{font-family:'Cinzel',serif; font-size:1.15rem; font-weight:600; margin-bottom:8px;}
+  .rule p{color:var(--muted); font-size:0.97rem;}
+  .rule .tag-inline{
+    display:inline-block; font-family:'JetBrains Mono',monospace; font-size:0.78rem;
+    color:var(--gold); background:rgba(201,162,75,0.1); padding:2px 8px; border-radius:2px;
+  }
+
+  /* ---------- VIBES BANNER ---------- */
+  .vibes-banner{
+    max-width:820px; margin:40px auto 0; text-align:center;
+    border:1px solid var(--gold-dim); border-radius:4px;
+    padding:32px 36px;
+    background:linear-gradient(180deg, rgba(201,162,75,0.06), transparent 60%), var(--panel);
+  }
+  .vibes-banner h3{font-family:'Cinzel',serif; font-size:1.2rem; color:var(--gold);}
+  .vibes-banner p{color:var(--muted); margin-top:10px; font-size:0.96rem;}
+
+  /* ---------- STAFF ---------- */
+  .staff-section{
+    max-width:820px; margin:60px auto 0;
+  }
+  .staff-head{text-align:center; margin-bottom:32px;}
+  .staff-head h2{font-family:'Cinzel',serif; font-size:1.6rem; font-weight:600;}
+  .staff-head p{color:var(--muted); margin-top:10px;}
+  .staff-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:4px; overflow:hidden;
+  }
+  @media(max-width:640px){ .staff-grid{grid-template-columns:1fr;} }
+  .staff-col{background:var(--panel); padding:28px 32px;}
+  .staff-col .role-lbl{
+    font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.2em;
+    text-transform:uppercase; color:var(--gold-dim); margin-bottom:16px; display:block;
+  }
+  .staff-col ul{list-style:none;}
+  .staff-col li{
+    padding:8px 0; border-top:1px solid var(--line); font-size:0.96rem;
+  }
+  .staff-col li:first-of-type{border-top:none;}
+
+  footer{
+    border-top:1px solid var(--line); padding:36px 24px; text-align:center;
+    color:var(--muted); font-size:0.85rem; position:relative; z-index:1;
+  }
+  footer .crown{color:var(--gold);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important; scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-field"></div>
+<div class="vignette"></div>
+
+<header>
+  <nav>
+    <div class="brand"><span class="crown">♛</span> GAMING EMPIRE</div>
+    <div class="nav-links">
+      <a href="index.html#perks">Perks</a>
+      <a href="index.html#games">Games</a>
+      <a href="index.html#ranks">Ranks</a>
+      <a href="events.html">Events</a>
+      <a href="rules.html" class="active">Rules</a>
+    </div>
+    <a class="nav-cta" href="https://discord.gg/KFmS5ykZMJ" target="_blank" rel="noopener">Join Now</a>
+  </nav>
+</header>
+
+<div class="page-head">
+  <span class="eyebrow">Community Guidelines</span>
+  <h1 class="display">Server Rules &amp; Guidelines</h1>
+  <p>Welcome to Gaming Empire! To keep this a safe, fun, and non-toxic environment for everyone, please follow these guidelines. Breaking them may result in a warning, mute, or ban.</p>
+  <div class="age-flag">⚠ Strictly an 18+ server</div>
+</div>
+
+<section>
+  <div class="rules-list">
+    <div class="rule">
+      <div class="rule-num mono">01</div>
+      <div>
+        <h3>Be respectful and civil</h3>
+        <p>No toxicity, bullying, or personal attacks. Respect others' choices and privacy the way you'd want your own respected. Treat all members with respect, regardless of their skill level or game choice.</p>
+      </div>
+    </div>
+    <div class="rule">
+      <div class="rule-num mono">02</div>
+      <div>
+        <h3>No spamming</h3>
+        <p>Keep messages and caps lock to a reasonable level. Do not advertise other servers or products without staff permission — you're welcome to promote your own content or streams in <span class="tag-inline">#promote</span>.</p>
+      </div>
+    </div>
+    <div class="rule">
+      <div class="rule-num mono">03</div>
+      <div>
+        <h3>No inappropriate content (NSFW)</h3>
+        <p>Keep all channels SFW. Sexually explicit, overly graphic, or maliciously linked content is strictly prohibited. If you'd like to post NSFW content, grab the NSFW role from <span class="tag-inline">#pick-ya-roles</span> and post there.</p>
+      </div>
+    </div>
+    <div class="rule">
+      <div class="rule-num mono">04</div>
+      <div>
+        <h3>No cheats, hacks, or exploits</h3>
+        <p>Not many people enjoy playing with — or against — a cheater. Keep it to yourself, or you will receive a permanent ban.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="vibes-banner">
+    <h3 class="display">We only want &amp; give good vibes</h3>
+    <p>Don't @everyone. You can use @role to an extent — just don't abuse it.</p>
+  </div>
+
+  <div class="staff-section">
+    <div class="staff-head">
+      <h2>Server Staff</h2>
+      <p>Have a question or need to report something? Reach out to any of the team below.</p>
+    </div>
+    <div class="staff-grid">
+      <div class="staff-col">
+        <span class="role-lbl">Admins</span>
+        <ul>
+          <li>NKMaaate</li>
+          <li>SaltyCarrots</li>
+          <li>RoyalRaid</li>
+          <li>mrmaaatexd</li>
+        </ul>
+      </div>
+      <div class="staff-col">
+        <span class="role-lbl">Moderators</span>
+        <ul>
+          <li>Jerry Fuck Knuckles</li>
+          <li>Billy Clutch Knuckles</li>
+          <li>Gremlin</li>
+          <li>Cry.</li>
+          <li>Duke</li>
+          <li>Ye'gga</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="crown">♛</span> Gaming Empire — Made by Gamers, for Gamers.
+</footer>
+
+</body>
+</html>
