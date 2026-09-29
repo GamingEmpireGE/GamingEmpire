@@ -125,6 +125,12 @@
   .event-card-body p{color:var(--muted); margin-bottom:22px; max-width:600px;}
   .event-card-body p:last-of-type{margin-bottom:32px;}
 
+  .bracket-frame{
+    border:1px solid var(--line); border-radius:4px; overflow:hidden;
+    margin:0 0 34px; background:var(--ink);
+  }
+  .bracket-img{width:100%; height:auto; display:block;}
+
   .countdown{
     display:flex; gap:14px; margin:0 0 34px; flex-wrap:wrap;
   }
@@ -217,6 +223,10 @@
     <div class="event-card-body">
       <p>CS2 1v1 Tournament — crowning the server's #1 CS2 player. Think you've got what it takes to smash through all the competition?</p>
       <p>Join the bracket and place yourself in the tournament to secure your spot.</p>
+
+      <div class="bracket-frame">
+        <img src="assets/cs2-1v1-bracket.png" alt="CS2 1v1 Tournament bracket" class="bracket-img">
+      </div>
 
       <div class="countdown mono" id="countdown">
         <div class="cd-block"><div class="cd-num" id="cd-days">--</div><div class="cd-lbl">Days</div></div>
