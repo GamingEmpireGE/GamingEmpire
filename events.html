@@ -131,6 +131,18 @@
   }
   .bracket-img{width:100%; height:auto; display:block;}
 
+  .steam-link{
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    border:1px solid var(--line); border-radius:2px; padding:14px 18px;
+    margin:0 0 30px; background:var(--ink);
+  }
+  .steam-lbl{
+    font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--muted);
+  }
+  .steam-link a{color:var(--emerald); font-size:0.92rem; word-break:break-all;}
+  .steam-link a:hover{text-decoration:underline;}
+
   .countdown{
     display:flex; gap:14px; margin:0 0 34px; flex-wrap:wrap;
   }
@@ -236,6 +248,45 @@
       </div>
 
       <a class="btn-primary" href="https://discord.gg/KFmS5ykZMJ" target="_blank" rel="noopener">Join Discord to enter the bracket</a>
+    </div>
+  </div>
+
+  <div class="event-card" style="margin-top:32px;">
+    <div class="event-card-top">
+      <span class="event-tag">Upcoming</span>
+      <h2>Meccha Chameleon Game Night</h2>
+      <div class="game-line mono">Community Game Night · Hide &amp; Seek</div>
+    </div>
+
+    <div class="event-meta-grid">
+      <div class="event-meta">
+        <div class="lbl">Date</div>
+        <div class="val">Oct 10, 2026</div>
+      </div>
+      <div class="event-meta">
+        <div class="lbl">Time</div>
+        <div class="val">10:00 PM AEST</div>
+      </div>
+      <div class="event-meta">
+        <div class="lbl">Where</div>
+        <div class="val">Gaming Empire Discord</div>
+      </div>
+    </div>
+
+    <div class="event-card-body">
+      <div class="bracket-frame">
+        <img src="assets/meccha-chameleon.png" alt="Meccha Chameleon Game Night" class="bracket-img">
+      </div>
+
+      <p>Do you enjoy hide-and-seek style games? This may be the event for you. It's similar to Prop Hunt — you hide and paint yourself, blending into the map to stay hidden while the seeker (or seekers) hunt you down.</p>
+      <p>Can you survive till the very end? Jump in the game and come have some fun with a group of fun legends.</p>
+
+      <div class="steam-link">
+        <span class="steam-lbl">Get the game on Steam</span>
+        <a href="https://store.steampowered.com/app/4704690/MECCHA_CHAMELEON" target="_blank" rel="noopener">store.steampowered.com/app/4704690/MECCHA_CHAMELEON</a>
+      </div>
+
+      <a class="btn-primary" href="https://discord.gg/KFmS5ykZMJ" target="_blank" rel="noopener">Join Discord for details</a>
     </div>
   </div>
 
