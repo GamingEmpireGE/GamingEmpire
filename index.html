@@ -33,14 +33,20 @@
   .display{font-family:'Cinzel',serif;letter-spacing:0.02em;}
   .mono{font-family:'JetBrains Mono',monospace;}
 
-  /* background texture: faint hex/circuit grid */
-  .grid-field{
-    position:fixed; inset:0; z-index:0; pointer-events:none;
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size:64px 64px;
-    opacity:0.08;
+  /* background texture: drifting embers */
+  .ember-field{
+    position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+  }
+  .ember{
+    position:absolute; bottom:-20px; border-radius:50%;
+    background:radial-gradient(circle, rgba(201,162,75,0.9), rgba(201,162,75,0));
+    animation: emberRise linear infinite;
+  }
+  @keyframes emberRise{
+    0%{ transform:translateY(0) translateX(0); opacity:0; }
+    10%{ opacity:0.85; }
+    90%{ opacity:0.35; }
+    100%{ transform:translateY(-110vh) translateX(var(--drift,20px)); opacity:0; }
   }
   .vignette{
     position:fixed; inset:0; z-index:0; pointer-events:none;
@@ -250,7 +256,7 @@
 </head>
 <body>
 
-<div class="grid-field"></div>
+<div class="ember-field" id="ember-field"></div>
 <div class="vignette"></div>
 
 <header>
@@ -412,6 +418,28 @@
     }
   }
   loadDiscordStats();
+</script>
+
+<script>
+  // Drifting ember background
+  (function(){
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const host = document.getElementById('ember-field');
+    if(!host) return;
+    const count = 24;
+    for(let i=0;i<count;i++){
+      const e = document.createElement('div');
+      e.className = 'ember';
+      const size = 3 + Math.random()*6;
+      e.style.width = size+'px';
+      e.style.height = size+'px';
+      e.style.left = (Math.random()*100)+'%';
+      e.style.setProperty('--drift', (Math.random()*60-30)+'px');
+      e.style.animationDuration = (9 + Math.random()*9)+'s';
+      e.style.animationDelay = (Math.random()*14)+'s';
+      host.appendChild(e);
+    }
+  })();
 </script>
 
 </body>
