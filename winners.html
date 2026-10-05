@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Winners — Gaming Empire</title>
+<meta name="description" content="Gaming Empire event winners. Waifu won the CS2 1v1 Tournament on October 3rd, 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:      #0A0D16;
+    --panel:    #131829;
+    --panel-2:  #1B2138;
+    --line:     #2A314D;
+    --gold:     #C9A24B;
+    --gold-dim: #8A7238;
+    --emerald:  #4ADE80;
+    --ember:    #FF6B4A;
+    --text:     #E7E9F2;
+    --muted:    #8891A8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:'Space Grotesk',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  .display{font-family:'Cinzel',serif;letter-spacing:0.02em;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  .ember-field{
+    position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+  }
+  .ember{
+    position:absolute; bottom:-20px; border-radius:50%;
+    background:radial-gradient(circle, rgba(201,162,75,0.9), rgba(201,162,75,0));
+    animation: emberRise linear infinite;
+  }
+  @keyframes emberRise{
+    0%{ transform:translateY(0) translateX(0); opacity:0; }
+    10%{ opacity:0.85; }
+    90%{ opacity:0.35; }
+    100%{ transform:translateY(-110vh) translateX(var(--drift,20px)); opacity:0; }
+  }
+  .vignette{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background: radial-gradient(circle at 50% 0%, rgba(201,162,75,0.10), transparent 55%),
+                radial-gradient(circle at 50% 100%, rgba(10,13,22,0.9), transparent 60%);
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,13,22,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:1120px; margin:0 auto; padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-size:1.05rem; font-weight:600;}
+  .brand .crown{color:var(--gold); font-size:1.2rem;}
+  .nav-links{display:flex; gap:32px; font-size:0.92rem; color:var(--muted);}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-links a.active{color:var(--gold);}
+  .nav-cta{
+    background:var(--gold); color:var(--ink); font-weight:700; font-size:0.85rem;
+    padding:10px 20px; border-radius:2px; letter-spacing:0.03em; text-transform:uppercase;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .nav-cta:hover{transform:translateY(-1px); box-shadow:0 6px 20px rgba(201,162,75,0.25);}
+  @media(max-width:720px){ .nav-links{display:none;} }
+
+  /* ---------- PAGE HEAD ---------- */
+  .page-head{
+    position:relative; z-index:1; text-align:center; padding:90px 24px 60px;
+  }
+  .eyebrow{
+    display:inline-block; font-family:'JetBrains Mono',monospace; font-size:0.72rem;
+    letter-spacing:0.25em; text-transform:uppercase; color:var(--gold-dim);
+    border:1px solid var(--line); padding:6px 14px; border-radius:2px; margin-bottom:22px;
+  }
+  .page-head h1{font-size:clamp(2.2rem, 6vw, 3.6rem); font-weight:700;}
+  .page-head p{color:var(--muted); max-width:520px; margin:16px auto 0; font-size:1.05rem;}
+
+  section{position:relative; z-index:1; padding:0 24px 110px;}
+
+  /* ---------- WINNER CARD ---------- */
+  .winner-card{
+    max-width:900px; margin:0 auto;
+    border:1px solid var(--gold-dim); border-radius:4px;
+    background:linear-gradient(180deg, rgba(201,162,75,0.07), transparent 45%), var(--panel);
+    overflow:hidden;
+  }
+  .winner-top{
+    padding:44px 44px 36px;
+    display:grid; grid-template-columns:260px 1fr; gap:40px; align-items:center;
+  }
+  @media(max-width:700px){
+    .winner-top{grid-template-columns:1fr; padding:32px 24px; gap:28px; text-align:center;}
+  }
+  .portrait{
+    position:relative; width:100%; max-width:260px; aspect-ratio:1/1; margin:0 auto;
+    border:2px solid var(--gold); border-radius:4px; overflow:hidden;
+    box-shadow:0 0 40px rgba(201,162,75,0.25);
+  }
+  .portrait img{width:100%; height:100%; object-fit:cover; display:block;}
+  .portrait-crown{
+    position:absolute; top:-1px; left:-1px;
+    background:var(--gold); color:var(--ink);
+    font-family:'JetBrains Mono',monospace; font-size:0.65rem; font-weight:700;
+    letter-spacing:0.15em; text-transform:uppercase; padding:6px 12px;
+  }
+  .event-tag{
+    display:inline-block; font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--emerald); border:1px solid rgba(74,222,128,0.4); padding:6px 14px; border-radius:2px;
+    margin-bottom:18px;
+  }
+  .winner-info h2{font-family:'Cinzel',serif; font-size:clamp(2rem,5vw,3rem); font-weight:700; color:var(--gold); line-height:1.1;}
+  .winner-info .event-name{font-family:'Cinzel',serif; font-size:1.2rem; margin-top:14px;}
+  .winner-info .game-line{color:var(--muted); margin-top:6px; font-size:0.95rem; letter-spacing:0.03em;}
+  .winner-info p{color:var(--muted); margin-top:18px; max-width:460px;}
+  @media(max-width:700px){ .winner-info p{margin-left:auto; margin-right:auto;} }
+
+  .meta-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  @media(max-width:640px){ .meta-grid{grid-template-columns:1fr;} }
+  .meta{padding:22px 28px; border-right:1px solid var(--line);}
+  .meta:last-child{border-right:none;}
+  @media(max-width:640px){
+    .meta{border-right:none; border-bottom:1px solid var(--line);}
+    .meta:last-child{border-bottom:none;}
+  }
+  .meta .lbl{font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted);}
+  .meta .val{font-family:'JetBrains Mono',monospace; font-size:1.05rem; color:var(--text); margin-top:8px;}
+
+  .bracket-block{padding:36px 44px 44px;}
+  @media(max-width:700px){ .bracket-block{padding:28px 20px 32px;} }
+  .bracket-block .lbl{
+    font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.2em;
+    text-transform:uppercase; color:var(--gold-dim); display:block; margin-bottom:14px;
+  }
+  .bracket-frame{
+    border:1px solid var(--line); border-radius:4px; overflow:hidden; background:var(--ink);
+  }
+  .bracket-frame img{width:100%; height:auto; display:block;}
+
+  .more-winners{
+    max-width:900px; margin:48px auto 0; text-align:center;
+    border:1px dashed var(--line); border-radius:4px; padding:40px;
+    color:var(--muted); font-size:0.95rem;
+  }
+  .more-winners .lbl{
+    font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.2em;
+    text-transform:uppercase; color:var(--gold-dim); display:block; margin-bottom:12px;
+  }
+
+  footer{
+    border-top:1px solid var(--line); padding:36px 24px; text-align:center;
+    color:var(--muted); font-size:0.85rem; position:relative; z-index:1;
+  }
+  footer .crown{color:var(--gold);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important; scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="ember-field" id="ember-field"></div>
+<div class="vignette"></div>
+
+<header>
+  <nav>
+    <div class="brand"><span class="crown">♛</span> GAMING EMPIRE</div>
+    <div class="nav-links">
+      <a href="index.html#perks">Perks</a>
+      <a href="index.html#games">Games</a>
+      <a href="index.html#ranks">Ranks</a>
+      <a href="events.html">Events</a>
+      <a href="winners.html" class="active">Winners</a>
+      <a href="rules.html">Rules</a>
+    </div>
+    <a class="nav-cta" href="https://discord.gg/KFmS5ykZMJ" target="_blank" rel="noopener">Join Now</a>
+  </nav>
+</header>
+
+<div class="page-head">
+  <span class="eyebrow">Hall of Champions</span>
+  <h1 class="display">Event Winners</h1>
+  <p>The legends who've claimed the crown at Gaming Empire events.</p>
+</div>
+
+<section>
+  <div class="winner-card">
+    <div class="winner-top">
+      <div class="portrait">
+        <span class="portrait-crown">Champion</span>
+        <img src="assets/waifu.jpg" alt="Waifu, CS2 1v1 Tournament winner">
+      </div>
+      <div class="winner-info">
+        <span class="event-tag">Tournament Winner</span>
+        <h2>Waifu</h2>
+        <div class="event-name">CS2 1v1 Tournament</div>
+        <div class="game-line mono">Counter-Strike 2</div>
+        <p>Waifu fought through the bracket on October 3rd, 2026 to be crowned the server's #1 CS2 player.</p>
+      </div>
+    </div>
+
+    <div class="meta-grid">
+      <div class="meta">
+        <div class="lbl">Date</div>
+        <div class="val">Oct 3, 2026</div>
+      </div>
+      <div class="meta">
+        <div class="lbl">Event</div>
+        <div class="val">CS2 1v1 Tournament</div>
+      </div>
+      <div class="meta">
+        <div class="lbl">Winner</div>
+        <div class="val">Waifu</div>
+      </div>
+    </div>
+
+    <div class="bracket-block">
+      <span class="lbl">Final bracket</span>
+      <div class="bracket-frame">
+        <img src="assets/cs2-1v1-final-bracket.jpg" alt="Completed CS2 1v1 Tournament bracket with Waifu as the winner">
+      </div>
+    </div>
+  </div>
+
+  <div class="more-winners">
+    <span class="lbl">More champions to come</span>
+    Winners of future tournaments and game nights will be added here. Want your name on this page? Join the next event in Discord.
+  </div>
+</section>
+
+<footer>
+  <span class="crown">♛</span> Gaming Empire — Made by Gamers, for Gamers.
+</footer>
+
+<script>
+  // Drifting ember background
+  (function(){
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const host = document.getElementById('ember-field');
+    if(!host) return;
+    const count = 24;
+    for(let i=0;i<count;i++){
+      const e = document.createElement('div');
+      e.className = 'ember';
+      const size = 3 + Math.random()*6;
+      e.style.width = size+'px';
+      e.style.height = size+'px';
+      e.style.left = (Math.random()*100)+'%';
+      e.style.setProperty('--drift', (Math.random()*60-30)+'px');
+      e.style.animationDuration = (9 + Math.random()*9)+'s';
+      e.style.animationDelay = (Math.random()*14)+'s';
+      host.appendChild(e);
+    }
+  })();
+</script>
+
+</body>
+</html>
