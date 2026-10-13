@@ -227,11 +227,11 @@
     <div class="event-meta-grid">
       <div class="event-meta">
         <div class="lbl">Date</div>
-        <div class="val">To be announced</div>
+        <div class="val">Oct 23, 2026</div>
       </div>
       <div class="event-meta">
-        <div class="lbl">Format</div>
-        <div class="val">7v7 &middot; Best of 3</div>
+        <div class="lbl">Time</div>
+        <div class="val">9:00 PM AEST</div>
       </div>
       <div class="event-meta">
         <div class="lbl">Where</div>
@@ -246,8 +246,16 @@
 
       <p>Randomized teams, Best of 3. Vote for the first map, then the winning team picks the next map. Which team will end up with the team crown?</p>
       <p>Team Fire vs Team Water. Will the fire be too hot for the water, or will the water put that fire out?</p>
+      <p>Held live in the Gaming Empire Discord server. Join now to watch the event and find out which team becomes the winner. Fire or Water, who are you siding with?</p>
 
-      <a class="btn-primary" href="https://discord.gg/KFmS5ykZMJ" target="_blank" rel="noopener">Join Discord for details</a>
+      <div class="countdown mono" id="countdown">
+        <div class="cd-block"><div class="cd-num" id="cd-days">--</div><div class="cd-lbl">Days</div></div>
+        <div class="cd-block"><div class="cd-num" id="cd-hours">--</div><div class="cd-lbl">Hours</div></div>
+        <div class="cd-block"><div class="cd-num" id="cd-mins">--</div><div class="cd-lbl">Mins</div></div>
+        <div class="cd-block"><div class="cd-num" id="cd-secs">--</div><div class="cd-lbl">Secs</div></div>
+      </div>
+
+      <a class="btn-primary" href="https://discord.gg/KFmS5ykZMJ" target="_blank" rel="noopener">Join Discord to watch</a>
     </div>
   </div>
 
@@ -262,9 +270,8 @@
 </footer>
 
 <script>
-  // Countdown (only runs if a #countdown block exists on the page).
-  // To enable: add the countdown block to an event card and set eventDate below.
-  const eventDate = null; // e.g. new Date('2026-10-24T20:00:00+10:00').getTime();
+  // Countdown to Oct 23, 2026, 9:00 PM (Sydney time)
+  const eventDate = new Date('2026-10-23T21:00:00+11:00').getTime();
 
   function updateCountdown(){
     if(!eventDate || !document.getElementById('countdown')) return;
