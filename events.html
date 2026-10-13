@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Events — Gaming Empire</title>
-<meta name="description" content="Upcoming events for Gaming Empire — including Meccha Chameleon Game Night on October 10th, 2026.">
+<meta name="description" content="Upcoming events for Gaming Empire — including the CS2 7v7 Best of 3: Fire Team vs Water Team.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -220,18 +220,18 @@
   <div class="event-card">
     <div class="event-card-top">
       <span class="event-tag">Upcoming</span>
-      <h2>Meccha Chameleon Game Night</h2>
-      <div class="game-line mono">Community Game Night · Hide &amp; Seek</div>
+      <h2>CS2 7v7 Best of 3</h2>
+      <div class="game-line mono">Counter-Strike 2 &middot; Fire Team vs Water Team</div>
     </div>
 
     <div class="event-meta-grid">
       <div class="event-meta">
         <div class="lbl">Date</div>
-        <div class="val">Oct 10, 2026</div>
+        <div class="val">To be announced</div>
       </div>
       <div class="event-meta">
-        <div class="lbl">Time</div>
-        <div class="val">10:00 PM AEST</div>
+        <div class="lbl">Format</div>
+        <div class="val">7v7 &middot; Best of 3</div>
       </div>
       <div class="event-meta">
         <div class="lbl">Where</div>
@@ -241,23 +241,11 @@
 
     <div class="event-card-body">
       <div class="bracket-frame">
-        <img src="assets/meccha-chameleon.png" alt="Meccha Chameleon Game Night" class="bracket-img">
+        <img src="assets/cs2-7v7.jpg" alt="CS2 7v7 Fire Team vs Water Team" class="bracket-img">
       </div>
 
-      <p>Do you enjoy hide-and-seek style games? This may be the event for you. It's similar to Prop Hunt — you hide and paint yourself, blending into the map to stay hidden while the seeker (or seekers) hunt you down.</p>
-      <p>Can you survive till the very end? Jump in the game and come have some fun with a group of fun legends.</p>
-
-      <div class="steam-link">
-        <span class="steam-lbl">Get the game on Steam</span>
-        <a href="https://store.steampowered.com/app/4704690/MECCHA_CHAMELEON" target="_blank" rel="noopener">store.steampowered.com/app/4704690/MECCHA_CHAMELEON</a>
-      </div>
-
-      <div class="countdown mono" id="countdown">
-        <div class="cd-block"><div class="cd-num" id="cd-days">--</div><div class="cd-lbl">Days</div></div>
-        <div class="cd-block"><div class="cd-num" id="cd-hours">--</div><div class="cd-lbl">Hours</div></div>
-        <div class="cd-block"><div class="cd-num" id="cd-mins">--</div><div class="cd-lbl">Mins</div></div>
-        <div class="cd-block"><div class="cd-num" id="cd-secs">--</div><div class="cd-lbl">Secs</div></div>
-      </div>
+      <p>Randomized teams, Best of 3. Vote for the first map, then the winning team picks the next map. Which team will end up with the team crown?</p>
+      <p>Team Fire vs Team Water. Will the fire be too hot for the water, or will the water put that fire out?</p>
 
       <a class="btn-primary" href="https://discord.gg/KFmS5ykZMJ" target="_blank" rel="noopener">Join Discord for details</a>
     </div>
@@ -274,10 +262,12 @@
 </footer>
 
 <script>
-  // Countdown to Sept 5, 2026, 9:00 PM AEST (UTC+10)
-  const eventDate = new Date('2026-10-10T22:00:00+10:00').getTime();
+  // Countdown (only runs if a #countdown block exists on the page).
+  // To enable: add the countdown block to an event card and set eventDate below.
+  const eventDate = null; // e.g. new Date('2026-10-24T20:00:00+10:00').getTime();
 
   function updateCountdown(){
+    if(!eventDate || !document.getElementById('countdown')) return;
     const now = new Date().getTime();
     const diff = eventDate - now;
 
